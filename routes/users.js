@@ -1,6 +1,7 @@
 const { User, validate } = require('../models/users');
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
 
 router.post('/', async (req, res) => {
     // First Validate The Request
@@ -20,7 +21,7 @@ router.post('/', async (req, res) => {
     }else {
         // Insert the new user if they do not exist yet
         user = new User({
-            // userid: req.body.userid,
+            userid: req.body.userid,
             firstname: req.body.firstname,
             middlename: req.body.middlename,
             lastname: req.body.lastname,
